@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Selenium.Chrome.WebDriver" Version="83.0.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MiaoMiaoTest.Common\MiaoMiaoTest.Common.csproj" />
+    <ProjectReference Include="..\MiaoMiaoTest.Config\MiaoMiaoTest.Config.csproj" />
+    <ProjectReference Include="..\MiaoMiaoTest.Models\MiaoMiaoTest.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ChromeDriver\chromedriver.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
