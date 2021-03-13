@@ -121,52 +121,6 @@ namespace MiaoMiaoTest.Common.Extensions
             return source.Contains(value);
         }
 
-        /// <summary>
-        /// 将对象[主要是匿名对象]转换为dynamic
-        /// </summary>
-        public static dynamic ToDynamic(this object value)
-        {
-            IDictionary<string, object> expando = new ExpandoObject();
-            Type type = value.GetType();
-            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(type);
-            foreach (PropertyDescriptor property in properties)
-            {
-                var val = property.GetValue(value);
-                if (property.PropertyType.FullName != null && property.PropertyType.FullName.StartsWith("<>f__AnonymousType"))
-                {
-                    dynamic dval = val.ToDynamic();
-                    expando.Add(property.Name, dval);
-                }
-                else
-                {
-                    expando.Add(property.Name, val);
-                }
-            }
-            return (ExpandoObject)expando;
-        }
-
-        /// <summary>
-        /// 对象深度拷贝，复制出一个数据一样，但地址不一样的新版本
-        /// </summary>
-        //public static T DeepClone<T>(this T obj) where T : class
-        //{
-        //    if (obj == null)
-        //    {
-        //        return default(T);
-        //    }
-        //    if (typeof(T).HasAttribute<SerializableAttribute>())
-        //    {
-        //        throw new NotSupportedException("当前对象未标记特性“{0}”，无法进行DeepClone操作".FormatWith(typeof(SerializableAttribute)));
-        //    }
-        //    BinaryFormatter formatter = new BinaryFormatter();
-        //    using (MemoryStream ms = new MemoryStream())
-        //    {
-        //        formatter.Serialize(ms, obj);
-        //        ms.Seek(0L, SeekOrigin.Begin);
-        //        return (T)formatter.Deserialize(ms);
-        //    }
-        //}
-
         #endregion
     }
 }

@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Utility\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\MiaoMiaoTest.Common\MiaoMiaoTest.Common.csproj" />
     <ProjectReference Include="..\MiaoMiaoTest.FrameWork\MiaoMiaoTest.FrameWork.csproj" />
   </ItemGroup>
 
